@@ -43,7 +43,7 @@ def download(package: str,
             credentials = DEFAULT_CREDENTIALS
 
         # Make sure to use a valid json file with the credentials.
-        api = Playstore(credentials.strip(" '\""))
+        api = Playstore(credentials.strip(" '\""), proxy=proxy)
 
         try:
             # Get the application details.

@@ -22,7 +22,7 @@ class Playstore(object):
 
     LOGIN_URL = "https://android.clients.google.com/auth"
 
-    def __init__(self, config_file: str = "credentials.json"):
+    def __init__(self, config_file: str = "credentials.json", proxy: str = None):
         """
         Playstore object constructor.
 
@@ -61,7 +61,7 @@ class Playstore(object):
             )
             raise
 
-        self._login()
+        self._login(proxy)
 
     ##############################
     # Playstore Internal Methods #
@@ -86,7 +86,7 @@ class Playstore(object):
             self.configuration = json.loads(file.read())[0]
 
     @Util.retry(exception=RuntimeError)
-    def _login(self) -> None:
+    def _login(self, proxy: str = None) -> None:
         """
         Perform the login into the Play Store.
 
@@ -104,7 +104,10 @@ class Playstore(object):
             "lang": self.lang,
         }
 
-        response = requests.post(self.LOGIN_URL, data=params, verify=True)
+        if proxy:
+            response = requests.post(self.LOGIN_URL, data=params, verify=True, proxies={"http": proxy, "https": proxy})
+        else:
+            response = requests.post(self.LOGIN_URL, data=params, verify=True)
 
         res = {}
 

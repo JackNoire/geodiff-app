@@ -136,7 +136,7 @@ def google_location(proxy: Optional[str] = None) -> str:
                 res[key_match[0]] = loads(value_match[0])
         location_key = max(res.keys(), key=lambda x: int(x.lstrip("ds:")))
         return res[location_key][4]
-    except (KeyError, OSError, JSONDecodeError):
+    except (KeyError, OSError, JSONDecodeError, IndexError):
         return "Error getting location"
 
 

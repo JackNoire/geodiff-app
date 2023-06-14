@@ -14,6 +14,8 @@ The metadata and APK error datasets can be downloaded directly [here](https://dr
 
 ## Code
 - `apk-downloader`: download apps from Google Play
+    - Less secure app access is no longer available. From May 30, 2022, ​​Google no longer supports the use of third-party apps or devices which ask you to sign in to your Google Account using only your username and password.
+    - PlaystoreDownloader Login Failed: [Login Failed | App Password No Longer Works · Issue #83 · ClaudiuGeorgiu/PlaystoreDownloader](https://github.com/ClaudiuGeorgiu/PlaystoreDownloader/issues/83)
 - `gpcrawler`: download app metadata from Google Play
 - `privacy`: download privacy policies for Google Play apps
 

@@ -107,8 +107,8 @@ def get_metadata(queues: Dict[str, Queue], save_full: bool,
                     "version": metadata["version"],
                     "updated": metadata["updated"],
                     "released": metadata["released"],
-                    "dl": bool(metadata["downloadLink"]),
-                    "dle": bool(metadata["downloadLinkEnabled"])
+                    "dl": metadata["downloadLink"],
+                    "dle": metadata["downloadLinkEnabled"]
                 }
                 if reduced_metadata["released"]:
                     # The released date has format 'Oct 9, 2012'.

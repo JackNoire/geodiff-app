@@ -63,7 +63,7 @@ def _parse_response(dom: str) -> Dict[str, Any]:
     return res
 
 
-def _download_link(dom: str) -> (Optional[str], Optional[bool]):
+def _download_link(dom: str) -> tuple[Optional[str], Optional[bool]]:
     """Parse the download link from the request response.
 
     Args:
@@ -89,7 +89,7 @@ def _download_link(dom: str) -> (Optional[str], Optional[bool]):
 @sleep_and_retry
 @limits(calls=5, period=1)
 def _request(url: str, proxy: Optional[str] = None) -> str:
-    # type: (str) -> str
+    # type: (str, Optional[str]) -> str
     """Make a HTTPS request to a Google Play URL (ratelimit 5 requests/second).
 
     Args:

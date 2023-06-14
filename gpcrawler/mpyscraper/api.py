@@ -42,9 +42,11 @@ def details(app_id: str, proxy: Optional[str] = None,
     url = _build_url("details", url_in)
     dom = _request(url, proxy)
     res = _parse_response(dom)
-    location_key = max(res.keys(), key=lambda x: int(x.lstrip("ds:")))
+    # location_key = max(res.keys(), key=lambda x: int(x.lstrip("ds:")))
+    # result = {"appId": app_id, "url": url,
+    #           "siteLocation": res[location_key][4], "siteLanguage": res[location_key][5]}
     result = {"appId": app_id, "url": url,
-              "siteLocation": res[location_key][4], "siteLanguage": res[location_key][5]}
+              "siteLocation": "", "siteLanguage": ""}
     for key, spec in DETAIL.items():
         content = spec.extract_content(res)
         result[key] = content
