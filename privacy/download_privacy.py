@@ -175,7 +175,7 @@ def main() -> None:
         return
 
     # Add apps to queue.
-    for item in country_df.iteritems():
+    for item in country_df.items():
         app_queue.put(item)
 
     # Start threads to download policies.
